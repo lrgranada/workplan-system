@@ -3,7 +3,6 @@ package com.fpi.epay.processor;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -54,7 +53,14 @@ public class CustomProcessor implements Tasklet {
 				startDate = limits[0];
 				endDate = limits[1];
 			} else {
-				TaskEntity parentTask = taskMap.get(entity.getDependency());
+				TaskEntity parentTask  = null;
+				String[] dependencies = entity.getDependency().split(",");
+				
+				if (dependencies.length > 1) {
+					parentTask = taskMap.get(dependencies[dependencies.length - 1]);
+				} else {
+					parentTask = taskMap.get(entity.getDependency());
+				}
 				
 				Date parentEndDate = parentTask.getEndDate();
 				
