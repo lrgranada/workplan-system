@@ -19,3 +19,4 @@ Limitations:
 App's performance may be affected for longer task durations.
 Prints the tasks' start and end date in the console and will not provide a graphical or tabular output.
 Improper set up of tasks may cause an ungraceful exit of the app.
+Dependency column in the Task table is comma(,) delimited. Other delimiters may cause the app to fail.
